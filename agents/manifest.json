@@ -9,7 +9,7 @@
   "selectionPolicy": {
     "mode": "worker-assisted",
     "instructions": [
-      "Follow the PDLC stage order when stage artifacts are missing: research, analyst, risk, architect, planner, coding, review, release.",
+      "Follow the PDLC stage order when stage artifacts are missing: risk, research, analyst, architect, planner, coding, review, release.",
       "Choose the smallest set of agents that can cover the issue or review feedback.",
       "Use stage agents for GitHub issue comments that start with /pdlc.",
       "Prefer domain specialists over generic agents when file paths or requirements clearly match.",
