@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "languagePolicy": {
+    "internal": "English",
+    "businessInput": "Polish",
+    "businessOutput": "Polish",
+    "technicalMetadata": "English"
+  },
+  "selectionPolicy": {
+    "mode": "worker-assisted",
+    "instructions": [
+      "Choose the smallest set of agents that can cover the issue or review feedback.",
+      "Prefer domain specialists over generic agents when file paths or requirements clearly match.",
+      "Use the review agent for PR review feedback and requested changes.",
+      "Use the security agent only when the task touches auth, secrets, permissions, dependencies, network boundaries, or regulated data."
+    ]
+  },
+  "agents": [
+    {
+      "id": "angular-agent",
+      "name": "Angular Agent",
+      "promptPath": "agents/angular/agent.md",
+      "triggers": ["angular", "typescript", "frontend", "component", "src/app", ".ts", ".html", ".css"],
+      "responsibilities": ["Angular components", "Angular tests", "TypeScript frontend logic", "build fixes"]
+    },
+    {
+      "id": "java-agent",
+      "name": "Java Agent",
+      "promptPath": "agents/java/agent.md",
+      "triggers": ["java", "maven", "pom.xml", "src/main/java", "src/test/java"],
+      "responsibilities": ["Java backend code", "JUnit tests", "Maven build fixes"]
+    },
+    {
+      "id": "dotnet-agent",
+      "name": ".NET Agent",
+      "promptPath": "agents/dotnet/agent.md",
+      "triggers": [".net", "dotnet", "c#", "csproj", "Program.cs", "src/*.cs"],
+      "responsibilities": [".NET APIs", "C# tests", "dotnet build/test fixes"]
+    },
+    {
+      "id": "review-agent",
+      "name": "Review Fix Agent",
+      "promptPath": "agents/review/agent.md",
+      "triggers": ["review", "requested changes", "fix-review", "pull request", "inline comment"],
+      "responsibilities": ["Review feedback triage", "scoped PR fixes", "CI repair after review"]
+    },
+    {
+      "id": "security-agent",
+      "name": "Security Agent",
+      "promptPath": "agents/security/agent.md",
+      "triggers": ["security", "auth", "token", "secret", "permission", "dependency", "vulnerability", "mcp"],
+      "responsibilities": ["Security review", "secret handling", "dependency risk", "permission boundaries"]
+    }
+  ]
+}

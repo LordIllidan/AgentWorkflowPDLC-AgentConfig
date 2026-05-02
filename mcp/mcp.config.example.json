@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "description": "Example MCP configuration metadata for PDLC workers. Copy into a secure runtime location before use.",
+  "servers": [
+    {
+      "id": "pdlc-gateway",
+      "name": "PDLC Gateway",
+      "transport": "http",
+      "urlEnv": "PDLC_MCP_GATEWAY_URL",
+      "auth": {
+        "type": "bearer-token",
+        "tokenEnv": "PDLC_MCP_GATEWAY_TOKEN"
+      },
+      "allowedUse": ["requirements", "analysis", "code-context", "documentation"],
+      "auditRequired": true
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "transport": "cli",
+      "command": "gh",
+      "allowedUse": ["issues", "pull-requests", "checks"],
+      "auditRequired": true
+    }
+  ],
+  "policy": {
+    "noSecretsInPrompts": true,
+    "preferReadOnlyToolsUntilImplementation": true,
+    "requireAuditForExternalWrites": true
+  }
+}
