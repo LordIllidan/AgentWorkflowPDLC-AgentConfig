@@ -9,13 +9,50 @@
   "selectionPolicy": {
     "mode": "worker-assisted",
     "instructions": [
+      "Follow the PDLC stage order when stage artifacts are missing: research, analyst, risk, architect, planner, coding, review, release.",
       "Choose the smallest set of agents that can cover the issue or review feedback.",
+      "Use stage agents for GitHub issue comments that start with /pdlc.",
       "Prefer domain specialists over generic agents when file paths or requirements clearly match.",
       "Use the review agent for PR review feedback and requested changes.",
       "Use the security agent only when the task touches auth, secrets, permissions, dependencies, network boundaries, or regulated data."
     ]
   },
   "agents": [
+    {
+      "id": "research-agent",
+      "name": "Research Agent",
+      "promptPath": "agents/research/agent.md",
+      "triggers": ["research", "market", "trend", "tooling", "pdlc research", "/pdlc research"],
+      "responsibilities": ["Market and technical research", "feature proposal context", "research brief"]
+    },
+    {
+      "id": "analyst-agent",
+      "name": "Analyst Agent",
+      "promptPath": "agents/analyst/agent.md",
+      "triggers": ["analysis", "analyst", "requirements", "user story", "acceptance criteria", "/pdlc analyze"],
+      "responsibilities": ["Business analysis", "user stories", "acceptance criteria", "scope clarification"]
+    },
+    {
+      "id": "risk-agent",
+      "name": "Autonomy Risk Agent",
+      "promptPath": "agents/risk/agent.md",
+      "triggers": ["risk", "autonomy", "approval", "agent or developer", "/pdlc risk"],
+      "responsibilities": ["Risk classification", "autonomy recommendation", "approval gates", "stop conditions"]
+    },
+    {
+      "id": "architect-agent",
+      "name": "Architect Agent",
+      "promptPath": "agents/architect/agent.md",
+      "triggers": ["architecture", "architect", "adr", "contract", "affected area", "/pdlc architecture"],
+      "responsibilities": ["Architecture boundaries", "affected areas", "ADR decision", "technical impact"]
+    },
+    {
+      "id": "planner-agent",
+      "name": "Planner Agent",
+      "promptPath": "agents/planner/agent.md",
+      "triggers": ["plan", "planning", "implementation plan", "tasks", "/pdlc plan"],
+      "responsibilities": ["Implementation planning", "task breakdown", "verification plan", "handoff to coding worker"]
+    },
     {
       "id": "angular-agent",
       "name": "Angular Agent",

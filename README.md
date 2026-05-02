@@ -16,6 +16,11 @@ This repository stores reusable agent definitions, base prompts, skill notes, MC
 ```text
 agents/
   manifest.json
+  research/agent.md
+  analyst/agent.md
+  risk/agent.md
+  architect/agent.md
+  planner/agent.md
   angular/agent.md
   java/agent.md
   dotnet/agent.md
@@ -34,6 +39,17 @@ docs/
 ## Runtime Contract
 
 Workers should clone this repository at startup, read `agents/manifest.json`, and attach matching agent prompts to the Claude Code task prompt.
+
+GitHub issue stage commands:
+
+```text
+/pdlc research
+/pdlc analyze
+/pdlc risk
+/pdlc architecture
+/pdlc plan
+/approve ai-coding
+```
 
 Default usage:
 
